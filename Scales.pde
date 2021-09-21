@@ -1,31 +1,43 @@
-   void setup() {
-  size(500, 500);  //feel free to change the size
-  noLoop(); //stops the draw() function from repeating
+int startx = 150;
+int starty = 0;
+int endx = 150;
+int endy = 0;
+void setup()
+{
+  size(300,300);
+
+  background(0, 0, 0);
 }
-void draw() {
-
-  //your code here
-  for (int y = 510; y > -30; y-= 18) {
-    for(int x = 510; x > -30; x-= 30) { 
-      int r = (int)(Math.random() * 206 + 60);
-      int g = 37;/*(int)(Math.random() * 130 + 10);*/
-      int b = 120; /*(int)(Math.random() * 150 + 70);*/
-      fill(r, g, b);
-      scale(x, y); }
+void draw(){
+  stroke(0);
+  int r = (int)(Math.random()*260+80);
+    stroke(r, 10, 100);
+  while(starty < 310){
+    int changex = ((int)(Math.random()*19 - 9));
+    int changey = ((int)(Math.random()*10));
+    endx = startx+changex;
+    endy = starty+changey;
+    tint(255, 128);
+    strokeWeight(10);
+    line(startx, starty, endx, endy);
+    
+    //stroke(255);
+    //strokeWeight(1);
+    //line(startx, starty, endx, endy);
+    startx = endx;
+    starty = endy;
   }
-fill(209, 37, 120);
-bezier(130, 200, 145, 120, 180, 120, 230, 200); 
-fill(255, 255, 255);
-bezier(130, 200, 145, 130, 180, 130, 230, 200); 
-bezier(130, 200, 145, 270, 180, 270, 230, 200); 
-fill(0);
-ellipse(160, 200, 30, 80);    
+//set stroke color to random value
+//while loop repeating until end y is off screen
 
-  }
- 
-
-void scale(int x, int y) {
-  //your code here
+}
+void mousePressed()
+{
+  startx = 150;
+  starty = 0;
+  endx = 150;
+  endy = 0;
+  draw();
   
-  bezier(x, y, x-30, y+40, x-30, y+40, x-60, y);
+//set x and y to original values
 }
